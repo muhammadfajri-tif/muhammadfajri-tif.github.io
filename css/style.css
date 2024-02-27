@@ -56,6 +56,15 @@ a:hover {
   color: teal;
 }
 
+.animate-img {
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.animate-img:hover {
+  transform: scale(1.1);
+}
+
 .about {
   max-width: 800px;
   margin: 5% auto;
