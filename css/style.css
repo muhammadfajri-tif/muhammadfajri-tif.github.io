@@ -109,6 +109,7 @@ a:hover {
   position: relative;
 }
 .menu-toggle input {
+  color: white;
   position: absolute;
   top: -5px;
   left: -3px;
@@ -122,7 +123,7 @@ a:hover {
   display: block;
   width: 21px;
   height: 2px;
-  background-color: darkslategray;
+  background-color: dimgray;
   border-radius: 3px;
   transition: all 0.7s;
 }
@@ -138,10 +139,14 @@ a:hover {
 
 .menu-toggle input:checked ~ span:nth-child(2) {
   transform: rotate(45deg);
+  background-color: snow;
+  z-index: 10;
 }
 
 .menu-toggle input:checked ~ span:nth-child(4) {
   transform: rotate(-45deg);
+  background-color: snow;
+  z-index: 10;
 }
 /* invis span ke 2 / child ke 3 */
 .menu-toggle input:checked ~ span:nth-child(3) {
@@ -390,11 +395,26 @@ p {
     align-items: start;
     /* justify-content: center; */
   }
+
+  iframe {
+    width: 440px;
+    height: 300px;
+  }
 }
 
 @media screen and (max-width: 768px) {
   nav ul {
     width: 50%;
+  }
+
+  nav ul li:hover,
+  nav ul .active {
+    text-decoration: none;
+  }
+
+  iframe {
+    width: 320px;
+    height: 320px;
   }
 }
 
@@ -414,15 +434,19 @@ p {
     height: 100vh;
     justify-content: space-evenly;
     align-items: center;
-    background-color: coral;
+    background-color: black;
     /* transform: translateX(100%);  */
     transition: all 0.72s;
     opacity: 0;
     z-index: 2;
   }
   nav ul.menushow {
-    opacity: 0.5;
+    opacity: 0.8;
     /* transform: translateX(0); */
+  }
+  nav>ul>li>a {
+    color: snow;
+    text-decoration: none;
   }
   .is-avatar {
     left: 0;
