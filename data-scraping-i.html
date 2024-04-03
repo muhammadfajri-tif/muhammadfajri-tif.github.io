@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="unicode" charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Scraping I | Personal Page</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+
+  <!-- Data Tables lib -->
+  <link href="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.0.3/r-3.0.1/datatables.min.css" rel="stylesheet">
+  <script src="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.0.3/r-3.0.1/datatables.min.js"></script>
+</head>
+
+<body>
+  <!-- Header/Navigation -->
+  <header>
+    <nav>
+      <div class="logo">
+        <h4>Muhammad Fajri</h4>
+      </div>
+      <ul>
+        <li><a href="./index.html">Home</a></li>
+        <li class="active"><a href="./data-scraping-i.html">Data Scraping I</a></li>
+        <li><a href="./files.html">Files</a></li>
+        <li><a href="./assignment.html">Assignment</a></li>
+        <li><a href="./about.html">About</a></li>
+      </ul>
+      <div class="menu-toggle">
+        <input type="checkbox" />
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="about">
+    <div class="profile">
+      <h1>Tugas Data Scraping I - Week 8</h1>
+    </div>
+  </main>
+
+  <div class="table-wrapper">
+    <table id="table-result" class="display" style="width: 100%;">
+      <thead>
+        <tr>
+          <th>Judul</th>
+          <th>Kategori</th>
+          <th>Waktu Publish</th>
+          <th>Waktu Scraping</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+
+  <footer>
+    <p>
+      Made with ❤ by Muhammad Fajri. Fancy icon by
+      <a href="https://svgrepo.com/">SVG Repo</a>. Cool image by
+      <a href="https://unsplash.com/">Unsplash</a>.
+    </p>
+  </footer>
+
+  <!-- JS -->
+  <script src="./js/main.js"></script>
+  <script>
+    // get data
+    fetch("./data/news.json")
+      .then(req => req.json())
+      .then(data => {
+        // render table
+        $('#table-result').DataTable({
+          data,
+          columns: [
+            {data: 'judul'},
+            {data: 'kategori'},
+            {data: 'waktu_publish'},
+            {data: 'waktu_scraping'},
+          ],
+          columnDefs: [
+            {
+              target: 3,
+              render: DataTable.render.datetime()
+            }
+          ],
+          order: [3, 'asc'],
+          responsive: true,
+        });
+      });
+  </script>
+</body>
+
+</html>
